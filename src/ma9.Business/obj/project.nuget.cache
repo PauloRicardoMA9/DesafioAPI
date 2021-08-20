@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "yz/JNwCmXY/VHTG7j2yiQD6kHMR0WcSh0vFT8u/o1V4Ijt28c+haSlqu/I6iyYRhUAL7G4ZWCB+aiMPBbjmfoA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\paulo\\Documents\\Developer\\Projetos\\.Net\\3 - Rest API\\DesafioApi\\DesafioApi\\src\\ma9.Business\\ma9.Business.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\paulo\\.nuget\\packages\\fluentvalidation\\10.3.1\\fluentvalidation.10.3.1.nupkg.sha512"
+  ],
+  "logs": []
+}
