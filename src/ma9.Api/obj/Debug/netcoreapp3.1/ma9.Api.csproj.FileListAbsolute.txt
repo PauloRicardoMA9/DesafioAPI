@@ -64,3 +64,5 @@ C:\Users\paulo\Documents\Developer\Projetos\.Net\3 - Rest API\DesafioApi\Desafio
 C:\Users\paulo\Documents\Developer\Projetos\.Net\3 - Rest API\DesafioApi\DesafioApi\src\ma9.Api\obj\Debug\netcoreapp3.1\ma9.Api.dll
 C:\Users\paulo\Documents\Developer\Projetos\.Net\3 - Rest API\DesafioApi\DesafioApi\src\ma9.Api\obj\Debug\netcoreapp3.1\ma9.Api.pdb
 C:\Users\paulo\Documents\Developer\Projetos\.Net\3 - Rest API\DesafioApi\DesafioApi\src\ma9.Api\obj\Debug\netcoreapp3.1\ma9.Api.genruntimeconfig.cache
+C:\Users\paulo\Documents\Developer\Projetos\.Net\3 - Rest API\DesafioApi\DesafioApi\src\ma9.Api\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\Users\paulo\Documents\Developer\Projetos\.Net\3 - Rest API\DesafioApi\DesafioApi\src\ma9.Api\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

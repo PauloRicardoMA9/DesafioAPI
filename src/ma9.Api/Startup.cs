@@ -1,3 +1,4 @@
+using ma9.Api.Configuration;
 using ma9.Data.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -32,6 +33,10 @@ namespace ma9.Api
             });
 
             services.AddControllers();
+
+            services.AddAutoMapper(typeof(Startup));
+
+            services.ResolverDependencias();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "KfczY92ewvo/J/cTRNpn7wr4KupuatgBUrg1CQm5btq3CKtGc2mAkfm5wrsmA+kG2oHYrGEzWHF5HEH2mktobQ==",
+  "dgSpecHash": "X+GFVenR+LbQsHGDehSZoPJrqvVPlkT8sEW0DInNfYeF+KjSvH1W5Ik0mYMhCBfwcEufS9a8Qk7s2JGfXlQqRQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\paulo\\Documents\\Developer\\Projetos\\.Net\\3 - Rest API\\DesafioApi\\DesafioApi\\src\\ma9.Api\\ma9.Api.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\paulo\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
+    "C:\\Users\\paulo\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
     "C:\\Users\\paulo\\.nuget\\packages\\fluentvalidation\\10.3.1\\fluentvalidation.10.3.1.nupkg.sha512",
     "C:\\Users\\paulo\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\paulo\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.1\\microsoft.bcl.hashcode.1.1.1.nupkg.sha512",
@@ -70,7 +72,7 @@
     "C:\\Users\\paulo\\.nuget\\packages\\system.objectmodel\\4.3.0\\system.objectmodel.4.3.0.nupkg.sha512",
     "C:\\Users\\paulo\\.nuget\\packages\\system.private.datacontractserialization\\4.3.0\\system.private.datacontractserialization.4.3.0.nupkg.sha512",
     "C:\\Users\\paulo\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
-    "C:\\Users\\paulo\\.nuget\\packages\\system.reflection.emit\\4.3.0\\system.reflection.emit.4.3.0.nupkg.sha512",
+    "C:\\Users\\paulo\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512",
     "C:\\Users\\paulo\\.nuget\\packages\\system.reflection.emit.ilgeneration\\4.3.0\\system.reflection.emit.ilgeneration.4.3.0.nupkg.sha512",
     "C:\\Users\\paulo\\.nuget\\packages\\system.reflection.emit.lightweight\\4.3.0\\system.reflection.emit.lightweight.4.3.0.nupkg.sha512",
     "C:\\Users\\paulo\\.nuget\\packages\\system.reflection.extensions\\4.3.0\\system.reflection.extensions.4.3.0.nupkg.sha512",
