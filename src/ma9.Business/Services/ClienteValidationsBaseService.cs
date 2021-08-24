@@ -17,20 +17,27 @@ namespace ma9.Business.Services
 
         protected bool ClienteProntoParaAdicionar(Cliente cliente)
         {
-            if (NaoValidar(cliente) || CpfJaCadastrado(cliente))
-            {
+            if (NaoValidar(cliente))
                 return false;
-            }
+
+            if (CpfJaCadastrado(cliente))
+                return false;
+
             return true;
         }
 
         protected async Task<bool> ClienteProntoParaAtualizar(Guid id, Cliente cliente)
         {
-            bool cadastrado = await ClienteCadastrado(id);
-            if (!IdsIguais(id, cliente) || !cadastrado)
-            {
+            if (!IdsIguais(id, cliente))
                 return false;
-            }
+
+            if (!ClienteProntoParaAdicionar(cliente))
+                return false;
+
+            bool cadastrado = await ClienteCadastrado(id);
+            if (!cadastrado)
+                return false;
+
             return true;
         }
 

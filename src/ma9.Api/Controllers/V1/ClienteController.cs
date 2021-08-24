@@ -7,9 +7,10 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace ma9.Api.Controllers
+namespace ma9.Api.Controllers.V1
 {
-    [Route("[controller]")]
+    [ApiVersion("1.0")]
+    [Route("v{version:apiVersion}/[controller]")]
     public class ClienteController : MainController
     {
         private readonly IClienteRepository _clienteRepository;

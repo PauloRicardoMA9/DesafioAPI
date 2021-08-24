@@ -4,6 +4,8 @@ using ma9.Business.Services;
 using ma9.Data.Context;
 using ma9.Data.Repository;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace ma9.Api.Configuration
 {
@@ -15,6 +17,7 @@ namespace ma9.Api.Configuration
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<IClienteService, ClienteService>();
             services.AddScoped<INotificador, Notificador>();
+            services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
 
             return services;
         }

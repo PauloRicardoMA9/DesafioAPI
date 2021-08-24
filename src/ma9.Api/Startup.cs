@@ -1,7 +1,7 @@
 using ma9.Api.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -20,17 +20,13 @@ namespace ma9.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDatabase(Configuration);
-            services.AddControllers();
-            services.Configure<ApiBehaviorOptions>(options =>
-            {
-                options.SuppressModelStateInvalidFilter = true;
-
-            });
+            services.WebApiConfig();
+            services.AddSwaggerConfig();
             services.AddAutoMapper(typeof(Startup));
             services.ResolverDependencias();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApiVersionDescriptionProvider provider)
         {
             if (env.IsDevelopment())
             {
@@ -43,6 +39,7 @@ namespace ma9.Api
             {
                 endpoints.MapControllers();
             });
+            app.UseSwaggerConfig(provider);
         }
     }
 }
