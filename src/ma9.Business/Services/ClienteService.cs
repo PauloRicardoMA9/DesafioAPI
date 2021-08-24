@@ -1,38 +1,37 @@
-﻿using AutoMapper;
-using FluentValidation;
-using FluentValidation.Results;
-using ma9.Business.Interfaces;
+﻿using ma9.Business.Interfaces;
 using ma9.Business.Models;
-using ma9.Business.Models.Validations;
-using ma9.Business.Models.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ma9.Business.Services
 {
-    public class ClienteService : IClienteService
+    public class ClienteService : ClienteValidationsBaseService , IClienteService
     {
         private readonly IClienteRepository _clienteRepository;
-        private readonly IMapper _mapper;
 
-        public ClienteService(IClienteRepository clienteRepository)
+        public ClienteService(IClienteRepository clienteRepository, INotificador notificador) : base(clienteRepository, notificador)
         {
             _clienteRepository = clienteRepository;
         }
 
         public async Task<bool> Adicionar(Cliente cliente)
         {
-            //Validar Model
-
+            if (!ClienteProntoParaAdicionar(cliente))
+            {
+                return false;
+            }
             await _clienteRepository.Adicionar(cliente);
             return true;
         }
 
         public async Task<bool> Atualizar(Guid id, Cliente clienteAtualizado)
         {
-            //Validar Model
+            bool clientePronto = await ClienteProntoParaAtualizar(id, clienteAtualizado);
+            if (!clientePronto)
+            {
+                return false;
+            }
+            
             var cliente = await _clienteRepository.ObterClienteComContato(id);
 
             cliente.Nome = clienteAtualizado.Nome;
@@ -49,12 +48,11 @@ namespace ma9.Business.Services
 
         public async Task<bool> RemoverPorId(Guid id)
         {
-            var cliente = await _clienteRepository.ObterClienteComContato(id);
-            if (cliente == null)
+            bool cadastrado = await ClienteCadastrado(id);
+            if (!cadastrado)
             {
                 return false;
             }
-
             await _clienteRepository.RemoverPorId(id);
             return true;
         }

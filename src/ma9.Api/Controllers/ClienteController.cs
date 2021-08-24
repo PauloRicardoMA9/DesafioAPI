@@ -5,20 +5,21 @@ using ma9.Business.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace ma9.Api.Controllers
 {
-    [ApiController]
     [Route("[controller]")]
-    public class ClienteController : ControllerBase
+    public class ClienteController : MainController
     {
         private readonly IClienteRepository _clienteRepository;
         private readonly IClienteService _clienteService;
         private readonly IMapper _mapper;
 
-        public ClienteController(IClienteRepository clienteRepository, IMapper mapper, IClienteService clienteService)
+        public ClienteController(IClienteRepository clienteRepository,
+                                 IMapper mapper,
+                                 IClienteService clienteService,
+                                 INotificador notificador) : base(notificador)
         {
             _clienteRepository = clienteRepository;
             _mapper = mapper;
@@ -28,25 +29,21 @@ namespace ma9.Api.Controllers
         [HttpPost]
         public async Task<ActionResult> Adicionar(ClienteViewModel clienteViewModel)
         {
-            //ValidarViewModel
-
             var cliente = _mapper.Map<Cliente>(clienteViewModel);
             var Adicionado = await _clienteService.Adicionar(cliente);
 
             if (Adicionado) return CreatedAtAction("Adicionar", null);
-            return BadRequest();
+            return ReturnBadRequest();
         }
 
         [HttpPut("{id:guid}")]
         public async Task<ActionResult> Atualizar(Guid id, ClienteViewModel clienteAtualizadoViewModel)
         {
-            //Validar ViewModel
-
             var clienteAtualizado = _mapper.Map<Cliente>(clienteAtualizadoViewModel);
             var Atualizado = await _clienteService.Atualizar(id, clienteAtualizado);
 
-            if (Atualizado) return CreatedAtAction("Atualizar", null);
-            return BadRequest();
+            if (Atualizado) return NoContent();
+            return ReturnBadRequest();
         }
 
         [HttpDelete("{id:guid}")]
@@ -55,7 +52,7 @@ namespace ma9.Api.Controllers
             var removido = await _clienteService.RemoverPorId(id);
 
             if (removido) return NoContent();
-            return BadRequest();
+            return ReturnNotFound();
         }
 
         [HttpGet]
@@ -73,7 +70,7 @@ namespace ma9.Api.Controllers
             var cliente = await _clienteRepository.ObterClienteComContato(id);
             var clienteViewModel = _mapper.Map<ClienteViewModel>(cliente);
 
-            if(clienteViewModel == null) return NotFound();
+            if(clienteViewModel == null) return ReturnNotFound();
             return clienteViewModel;
         }
 

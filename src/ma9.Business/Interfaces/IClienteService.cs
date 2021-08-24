@@ -1,5 +1,4 @@
 ﻿using ma9.Business.Models;
-using ma9.Business.Models.ViewModels;
 using System;
 using System.Threading.Tasks;
 

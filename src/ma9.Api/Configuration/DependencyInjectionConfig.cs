@@ -1,4 +1,5 @@
 ﻿using ma9.Business.Interfaces;
+using ma9.Business.Notificacoes;
 using ma9.Business.Services;
 using ma9.Data.Context;
 using ma9.Data.Repository;
@@ -13,6 +14,7 @@ namespace ma9.Api.Configuration
             services.AddScoped<ModelsContext>();
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<IClienteService, ClienteService>();
+            services.AddScoped<INotificador, Notificador>();
 
             return services;
         }
