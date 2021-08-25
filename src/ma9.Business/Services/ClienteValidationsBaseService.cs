@@ -48,7 +48,7 @@ namespace ma9.Business.Services
 
         protected bool CpfJaCadastrado(Cliente cliente)
         {
-            var cadastrado = _clienteRepository.Buscar(clientes => clientes.Cpf == cliente.Cpf).Result.Any();
+            var cadastrado = _clienteRepository.Buscar(clienteBanco => clienteBanco.Cpf == cliente.Cpf && clienteBanco.Id != cliente.Id).Result.Any();
             if (cadastrado)
             {
                 Notificar("Já existe um cliente cadastrado com o cpf informado.");
