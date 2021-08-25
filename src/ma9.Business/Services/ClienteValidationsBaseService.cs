@@ -2,7 +2,6 @@
 using ma9.Business.Models;
 using System;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace ma9.Business.Services
 {
@@ -15,7 +14,7 @@ namespace ma9.Business.Services
             _clienteRepository = clienteRepository;
         }
 
-        protected bool ClienteProntoParaAdicionar(Cliente cliente)
+        protected bool ProntoParaAdicionar(Cliente cliente)
         {
             if (NaoValidar(cliente))
                 return false;
@@ -26,15 +25,15 @@ namespace ma9.Business.Services
             return true;
         }
 
-        protected async Task<bool> ClienteProntoParaAtualizar(Guid id, Cliente cliente)
+        protected bool ProntoParaAtualizar(Guid id, Cliente cliente)
         {
             if (!IdsIguais(id, cliente))
                 return false;
 
-            if (!ClienteProntoParaAdicionar(cliente))
+            if (!ProntoParaAdicionar(cliente))
                 return false;
 
-            bool cadastrado = await ClienteCadastrado(id);
+            bool cadastrado = ClienteCadastrado(id);
             if (!cadastrado)
                 return false;
 
@@ -43,7 +42,7 @@ namespace ma9.Business.Services
 
         protected bool NaoValidar(Cliente cliente)
         {
-            return !ExecutarValidacao(new ClienteValidation(), cliente) || !ExecutarValidacao(new ContatoValidation(), cliente.Contato);
+            return !ExecutarValidacao(new ClienteValidation(), cliente);
         }
 
         protected bool CpfJaCadastrado(Cliente cliente)
@@ -66,9 +65,9 @@ namespace ma9.Business.Services
             return iguais;
         }
 
-        protected async Task<bool> ClienteCadastrado(Guid id)
+        protected bool ClienteCadastrado(Guid id)
         {
-            var cadastrado = (await _clienteRepository.ObterClienteComContato(id) != null);
+            var cadastrado = _clienteRepository.Buscar(cliente => cliente.Id == id).Result.Any();
             if (!cadastrado)
             {
                 Notificar("Não existe um cliente cadastrado com o id informado.");

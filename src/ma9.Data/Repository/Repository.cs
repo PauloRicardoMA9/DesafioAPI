@@ -21,7 +21,7 @@ namespace ma9.Data.Repository
             DbSet = Database.Set<TEntity>();
         }
 
-        public async Task Adicionar(TEntity entity)
+        public virtual async Task Adicionar(TEntity entity)
         {
             DbSet.Add(entity);
             await SaveChanges();

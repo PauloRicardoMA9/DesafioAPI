@@ -16,6 +16,8 @@ namespace ma9.Api.Configuration
             services.AddScoped<ModelsContext>();
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<IClienteService, ClienteService>();
+            services.AddScoped<IContatoRepository, ContatoRepository>();
+            services.AddScoped<IContatoService, ContatoService>();
             services.AddScoped<INotificador, Notificador>();
             services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
 

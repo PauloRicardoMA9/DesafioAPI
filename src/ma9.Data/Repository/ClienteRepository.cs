@@ -13,6 +13,12 @@ namespace ma9.Data.Repository
         {
         }
 
+        public async Task<Cliente> ObterCliente(Guid id)
+        {
+            return await Database.Clientes.AsNoTracking().
+                FirstOrDefaultAsync(cliente => cliente.Id == id);
+        }
+
         public async Task<Cliente> ObterClienteComContato(Guid id)
         {
             return await Database.Clientes.AsNoTracking().

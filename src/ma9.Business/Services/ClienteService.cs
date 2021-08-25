@@ -16,7 +16,7 @@ namespace ma9.Business.Services
 
         public async Task<bool> Adicionar(Cliente cliente)
         {
-            if (!ClienteProntoParaAdicionar(cliente))
+            if (!ProntoParaAdicionar(cliente))
             {
                 return false;
             }
@@ -26,7 +26,7 @@ namespace ma9.Business.Services
 
         public async Task<bool> Atualizar(Guid id, Cliente clienteAtualizado)
         {
-            bool clientePronto = await ClienteProntoParaAtualizar(id, clienteAtualizado);
+            bool clientePronto = ProntoParaAtualizar(id, clienteAtualizado);
             if (!clientePronto)
             {
                 return false;
@@ -38,9 +38,6 @@ namespace ma9.Business.Services
             cliente.Sobrenome = clienteAtualizado.Sobrenome;
             cliente.Cpf = clienteAtualizado.Cpf;
             cliente.Sexo = clienteAtualizado.Sexo;
-            cliente.Contato.DDD = clienteAtualizado.Contato.DDD;
-            cliente.Contato.Telefone = clienteAtualizado.Contato.Telefone;
-            cliente.Contato.Email = clienteAtualizado.Contato.Email;
 
             await _clienteRepository.Atualizar(cliente);
             return true;
@@ -48,7 +45,7 @@ namespace ma9.Business.Services
 
         public async Task<bool> RemoverPorId(Guid id)
         {
-            bool cadastrado = await ClienteCadastrado(id);
+            bool cadastrado = ClienteCadastrado(id);
             if (!cadastrado)
             {
                 return false;
